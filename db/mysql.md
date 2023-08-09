@@ -441,3 +441,7 @@ where id>10 or age>10//age 没有建索引
 //参数与字段类型不符
 where phone=15465481230//相当于where phone = strtoint(phone)=15465481230
 ```
+# 一些知识点
+```
+ddl语句是非事务的
+```
