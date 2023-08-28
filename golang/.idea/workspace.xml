@@ -20,12 +20,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1b0512b5-870f-4da3-aa40-9547a134de30" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/test_http_cache/file.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_http_cache/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/channel_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/context_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/defer_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/int_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/leetcode_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/recover_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/string_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../db/mysql.md" beforeDir="false" afterPath="$PROJECT_DIR$/../db/mysql.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../network/tcp.md" beforeDir="false" afterPath="$PROJECT_DIR$/../network/tcp.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../redis/redis.md" beforeDir="false" afterPath="$PROJECT_DIR$/../redis/redis.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,25 +66,17 @@
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/test_http_cache" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/test" />
     <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\devin\github\note\golang\test" />
       <recent name="E:\devin\github\note\golang\test_http_cache" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Build.go build note/test_http_cache">
-    <configuration name="go build note/test_http_cache" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
-      <module name="golang" />
-      <working_directory value="$PROJECT_DIR$" />
-      <kind value="PACKAGE" />
-      <filePath value="$PROJECT_DIR$/test_http_cache/main.go" />
-      <package value="note/test_http_cache" />
-      <directory value="$PROJECT_DIR$" />
-      <method v="2" />
-    </configuration>
-    <configuration name="TestBreaker in note/test (1)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Go Test.TestLeetCode in note/test">
+    <configuration name="TestLeetCode in note/test (2)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="golang" />
       <working_directory value="$PROJECT_DIR$/test" />
       <framework value="gotest" />
@@ -87,10 +84,10 @@
       <package value="note/test" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
-      <pattern value="^\QTestBreaker\E$" />
+      <pattern value="^\QTestLeetCode\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestBreaker in note/test (2)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="TestLeetCode in note/test (3)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="golang" />
       <working_directory value="$PROJECT_DIR$/test" />
       <framework value="gotest" />
@@ -98,10 +95,10 @@
       <package value="note/test" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
-      <pattern value="^\QTestBreaker\E$" />
+      <pattern value="^\QTestLeetCode\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestBreaker in note/test" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="TestLeetCode in note/test (4)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="golang" />
       <working_directory value="$PROJECT_DIR$/test" />
       <framework value="gotest" />
@@ -109,27 +106,38 @@
       <package value="note/test" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
-      <pattern value="^\QTestBreaker\E$" />
+      <pattern value="^\QTestLeetCode\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestNew in note/limiter/tokenbucket (3)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="TestLeetCode in note/test (5)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="golang" />
-      <working_directory value="$PROJECT_DIR$/limiter/tokenbucket" />
+      <working_directory value="$PROJECT_DIR$/test" />
       <framework value="gotest" />
       <kind value="PACKAGE" />
-      <package value="note/limiter/tokenbucket" />
+      <package value="note/test" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
-      <pattern value="^\QTestNew\E$" />
+      <pattern value="^\QTestLeetCode\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestLeetCode in note/test" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="golang" />
+      <working_directory value="$PROJECT_DIR$/test" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="note/test" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^\QTestLeetCode\E$" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Build.go build note/test_http_cache" />
-        <item itemvalue="Go Test.TestBreaker in note/test (2)" />
-        <item itemvalue="Go Test.TestBreaker in note/test (1)" />
-        <item itemvalue="Go Test.TestBreaker in note/test" />
-        <item itemvalue="Go Test.TestNew in note/limiter/tokenbucket (3)" />
+        <item itemvalue="Go Test.TestLeetCode in note/test" />
+        <item itemvalue="Go Test.TestLeetCode in note/test (5)" />
+        <item itemvalue="Go Test.TestLeetCode in note/test (4)" />
+        <item itemvalue="Go Test.TestLeetCode in note/test (3)" />
+        <item itemvalue="Go Test.TestLeetCode in note/test (2)" />
       </list>
     </recent_temporary>
   </component>
@@ -153,38 +161,46 @@
     <integration-enabled>true</integration-enabled>
   </component>
   <component name="WindowStateProjectService">
-    <state width="1493" height="261" key="GridCell.Tab.0.bottom" timestamp="1690534580789">
+    <state width="439" height="466" key="DebuggerActiveHint" timestamp="1693102112457">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1690534580789" />
-    <state width="1493" height="261" key="GridCell.Tab.0.center" timestamp="1690534580789">
+    <state width="439" height="466" key="DebuggerActiveHint/0.0.1536.824@0.0.1536.824" timestamp="1693102112457" />
+    <state width="1493" height="261" key="GridCell.Tab.0.bottom" timestamp="1693139713297">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1690534580789" />
-    <state width="1493" height="261" key="GridCell.Tab.0.left" timestamp="1690534580789">
+    <state width="1493" height="261" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1693139713297" />
+    <state width="1493" height="261" key="GridCell.Tab.0.center" timestamp="1693139713297">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1690534580789" />
-    <state width="1493" height="261" key="GridCell.Tab.0.right" timestamp="1690534580789">
+    <state width="1493" height="261" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1693139713297" />
+    <state width="1493" height="261" key="GridCell.Tab.0.left" timestamp="1693139713297">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1690534580789" />
-    <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1690534580790">
+    <state width="1493" height="261" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1693139713297" />
+    <state width="1493" height="261" key="GridCell.Tab.0.right" timestamp="1693139713297">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1690534580790" />
-    <state width="1493" height="261" key="GridCell.Tab.1.center" timestamp="1690534580790">
+    <state width="1493" height="261" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1693139713297" />
+    <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1693139713297">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1690534580790" />
-    <state width="1493" height="261" key="GridCell.Tab.1.left" timestamp="1690534580789">
+    <state width="1493" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1693139713297" />
+    <state width="1493" height="261" key="GridCell.Tab.1.center" timestamp="1693139713297">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1690534580789" />
-    <state width="1493" height="261" key="GridCell.Tab.1.right" timestamp="1690534580790">
+    <state width="1493" height="261" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1693139713297" />
+    <state width="1493" height="261" key="GridCell.Tab.1.left" timestamp="1693139713297">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1690534580790" />
+    <state width="1493" height="261" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1693139713297" />
+    <state width="1493" height="261" key="GridCell.Tab.1.right" timestamp="1693139713297">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1693139713297" />
+    <state x="468" y="144" width="600" height="536" key="find.popup" timestamp="1692607915421">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="468" y="144" width="600" height="536" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1692607915421" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1690532283658">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -197,6 +213,11 @@
           <url>file://$PROJECT_DIR$/limiter/tokenbucket/tokenbucket.go</url>
           <line>34</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/test/leetcode_test.go</url>
+          <line>11</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

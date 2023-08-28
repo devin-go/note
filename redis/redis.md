@@ -42,6 +42,14 @@ ziplist是一个特殊的双向链表，用一块连续空间来表示双向链�
 <zlbytes><zltail><zllen><entry>...<entry><zlend>
 <entry>的结构:<prevrawlen><len><data>
 ```
+主要目的
+```c
+节省内存空间：
+(1)没有维护pre,next指针 （每个指针长度8字节）
+(2)紧凑行内存分配，不会产生大量内存垃圾碎片
+(3)整数使用二进制存储的(int大小为2或4字节)
+//1字节(byte)=8bit
+```
 充分体现了redis对存储空间的极致要求，存储样例
 ![Alt text](image.png)
 ### ziplist与hash
@@ -141,8 +149,13 @@ redis单线程是指处理用户发的命令这一流程是单线程[接收命�
 除了主线程外，还有持久化线程、lazyfree线程(4.0后增加)
 ```
 ## redis6.0后为什么引用多线程？
+[原理](https://zhuanlan.zhihu.com/p/452981967)
+![Alt text](image-4.png)
+```
 redis的瓶颈并不是cpu，而更多的是内存和网络io,所以单线程并没有什么问题。  
 6.0之后引入的是多个线程处理网络io，默认只开启了发送数据多线程，接收处理请求没有开启(真正处理命令还是单线程的)  
+```
+
 ### 接收命令开启多线程
 ```c
 //读请求也使用io多线程
@@ -167,7 +180,7 @@ io-threads 4
 ```
 1.每执行一次写命令，就持久化到磁盘
 2.每秒持久化一次
-3.no 由系统决定
+3.由系统决定
 ```
 #### AOF重写机制
 如果一直把写命令记录到文件里，文件肯定会非常大，所以有一个重写机制，将一些历史无用的命令删除掉  
@@ -200,7 +213,21 @@ save 60 10000 //60 秒之内，对数据库进行了至少 10000 次修改。
 
 ## redis集群
 ### 主从模式
+同步原理
 ```
+第一次同步，用replicaof命令：
+(1)主从建立连接
+(2)主准备RDB，并发送给从节点
+(3)从节点接收及加载RDB，加载完RDB后ACK主节点
+```
+第一次同步期间，主有处理写命令如何处理
+```c
+主会将写命令记录到buffer里
+当收到从节点ACK后，再buffer的写命令发送给从节点
+//注意：之后同步都只是发送写命令
+```
+优缺点
+```c
 优点：有数据备份安全、提高了读能力
 缺点：master发生故障需手动切换
 //注意在从节点，不会判断key是否过期，从节点过期key处理，依赖于主节点，主节点如果删除了过期key，会发送一条del指令到从节点
@@ -314,6 +341,28 @@ redis的lru算法
 ```
 (1)不设置过期时间，后台线程定期更新
 (2)加个锁，只允许一个请求访问DB
+(3)singleflight,即合并请求，将多个请求合并为一个
+```
+singleflight原理 
+```go
+type caller struct{
+    result interface{}
+    err error
+}
+
+func call(key string, f func()(result, error)) {
+    mu.Lock()
+    defer mu.UnLock()
+    if c,ok:=mm[key];ok{
+        wg.Wait()
+        return c.result, c.err
+    }
+    mm[key] = &call{}
+    wg.Add(1)
+    c.result,c.err = f()
+    wg.Done()
+    return c.result, c.err
+}
 ```
 #### 缓存穿透
 ```
