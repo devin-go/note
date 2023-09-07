@@ -215,4 +215,27 @@ func main() {
   panic("aa")
 }
 ```
+# ==,比较
+一个比较相通的原则是，[比较详细的介绍](https://darjun.github.io/2019/08/20/golang-equal/)
+```
+只有类型相同且值相同时，==比较才是true
+```
+golang可以分为四大类型：
+```
+基本类型：int,float,string
+复合类型：array和 struct
+引用类型：pointer，slice,map,channel
+接口类型：如error
+```
+注意
+```
+两个slice之间不能比较，只能和nil比较
+两个map之间不能比较，只能和nil比较
+```
+两个interface比较
+```
+(1)类型要相等
+(2)值要相等(用的是==比较法)
+(3)如果interface指向的是slice或map会报panic，因为两个slice或两个map之间是不可以比较的
+```
 

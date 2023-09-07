@@ -475,3 +475,18 @@ ddl语句是非事务的
   //所以高度为3的B+树(有两层是非叶子节点，一层是叶子节点)能存储的数据为
   1280*1280*15 约等于2.45 KW，即2000W行左右
 ```
+count(*),count(1),count(id),count(other)哪个性能高些？
+```c
+//结论
+count(*)=count(1)>count(id)>count(other)
+count()函数是统计不为NULL的记录有多少个
+//原因
+执行count函数的时候，会扫描所有数据：
+(1)没有二级索引时，扫描主键索引，但count(*)不用取出数据，所以比count(id)性能高些
+(2)有二级索引时，count(*)会使用二级索引，因为二级索引的节点不存储数据
+(3)count(*) mysql内部会转成count(0)，执行过程和count(1)基本一样
+(4)count(other)相当于没有索引可走了，全表扫描
+//如何优化count(*)?
+如果可以取用近似值，则可以用 explain select count(*) from t_table 来优化
+如果不可以，那么就要采取额外保存这个计数值
+```

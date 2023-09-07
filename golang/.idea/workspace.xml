@@ -20,15 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1b0512b5-870f-4da3-aa40-9547a134de30" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/limiter/go_limiter_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/leetcode_longest_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/leetcode_valid_parentheses.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/pre_sun_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/leetcode_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/leetcode_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../prompt.md" beforeDir="false" afterPath="$PROJECT_DIR$/../prompt.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../aa.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../en.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/服务保障.md" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
