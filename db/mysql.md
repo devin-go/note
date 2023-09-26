@@ -183,7 +183,7 @@ select count(1) from user where age>18;//假设是11
 read view
 ```c
 有四个关键的字段:creator_trx_id，m_ids,min_trx_id,max_trx_id
-creator_trx_id //创建read view的事务id
+creator_trx_id //创建read view的事务id,猜测是除max_trx_id外的最大id
 m_ids //创建read view时，当前数据库中的未提交的事务id(注意是个集合)
 min_trx_id //m_ids中最小的事务id
 max_trx_id //创建read view 时，数据库中下一个事务id
@@ -220,6 +220,7 @@ roll_ptr //上一个版本的地址
 ```
 
 # 锁
+mysql 有全局锁，表级别锁，行级锁
 ## 全局锁
 ```c
 //整个数据库只读
@@ -228,7 +229,12 @@ flush tables with read lock
 ## 表级锁
 表锁
 ```
-
+表锁也区分读和写锁
+读锁：
+  多个读锁之间不会阻塞
+  但注意持有读锁是不能插入数据的，包括自己
+写锁：
+  自己能读和写，但其他读和写请求都会阻塞
 ```
 元数据锁(MDL)
 ```
@@ -237,10 +243,15 @@ CURD会申请MDL读锁
 目的是保护执行sql的时候，防止表结构变
 ```
 意向锁
-```
-每当执行CURD的时候都会向表里插入意向锁。
-由于innodb支持行级锁和表锁，注意行级锁和表锁是互斥的
-所以意向锁的目的是：当要申请表锁时，快速判断表里有没有行记录锁(不用遍历整张表)
+```c
+//目的
+是加表锁时，快速判断表有没有记录加锁了，而不用遍历整张表
+//什么是意向锁？
+在执行select语句时，mysql会自动加"意向共享锁"
+在执行update等更新语句时，mysql会自动加"意向独占锁"
+意向锁之间不会冲突
+意向锁与行级锁不会冲突
+但意向锁与表级别锁(lock table user write)会互斥(除意向共享锁与 lock table user read 这种情况除外)
 ```
 AUTO-INC 锁
 ```
@@ -255,7 +266,7 @@ AUTO-INC 锁
 //https://xiaolincoding.com/mysql/lock/mysql_lock.html#auto-inc-%E9%94%81
 innodb_autoinc_lock_mode=2性能最高，但是在主从复制的时候且bin log 日志格式是statement时候，有可能发生数据不一致的情况
 ```
-行级锁
+## 行级锁
 ```
 记录锁(一条记录，应对where id=1情况)
 间隙锁(锁定一个范围，不包含记录本身)
@@ -456,6 +467,12 @@ where id>10 or age>10//age 没有建索引
 //参数与字段类型不符
 where phone=15465481230//相当于where phone = strtoint(phone)=15465481230
 ```
+## 联合索引
+```
+如创建一个联合索引：index(a,b,c)
+索引首先会根据a排序，当a值相等时，会根据b排序，当b又相等时，会根据c
+联合索引也有最左前辍原则，即如果 select * from T where b=2 and c=3 是无法使用到索引的
+```
 # 一些知识点
 ```
 ddl语句是非事务的
@@ -490,3 +507,28 @@ count()函数是统计不为NULL的记录有多少个
 如果可以取用近似值，则可以用 explain select count(*) from t_table 来优化
 如果不可以，那么就要采取额外保存这个计数值
 ```
+delete与truncate的区别
+```
+delete是一行一行数据删除，事务可以回滚(dml语句)
+truncate是drop表后，再创建表，事务可以回滚(ddl语句)
+```
+union 与 union all的区别
+```
+unino 会筛选掉重复记录(排序然后再删除)
+union all 不会删除，合并结果就返回
+所以union all 性能会比较好些
+```
+date,datetime,timestamp的区别
+```
+精度不一样
+  date：YYYY-MM-DD
+  datetime:只能到秒
+  timestamp：可以到毫秒
+范围不一样
+  date和datetime：1000-01-01到9999-12-31
+  timestamp:1970 -- 2037
+占用大小不一样
+  DATETIME存储8个字节，实际格式，与时区无关
+  TIMESTAMP存储4个字节，UTC格式，时区转化
+```
+

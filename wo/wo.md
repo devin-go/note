@@ -21,11 +21,40 @@
 可以复用grpc 服务，不用自己管理服务的细节
 ```
 
-### 方案二 用fd通信(现在使用的)
+### 方案二 socketpair(现在使用的)
+socketpair创建一对无名、相互连接的套接字，[原理](https://cloud.tencent.com/developer/article/2169065)
 ```
-优点:
-直接用fd通信(匿名管道，全双工方式)，不用端口
-缺点：
-要自己管理服务，如心跳等
-要自己模拟一个双向流
+fd[0]写的数据，只能由fd[1]读出
+而fd[1]写的数据，也只能由fd[0]读出
+    go 端使用fd[0]
+    core端使用fd[1]
+```
+# htmlserver
+```
+(1)index.html 动态注入一些内容：
+    wps_env
+    file_info
+(2)根据不同浏览器做一些差异化：
+    如微信小程序进来的，必须登陆
+    兼容QQ浏览器不能302问题
+(3)预调用内核打开文件
+(4)兼容私有化部署：
+    如金山文档、钉钉平台，他们之间的对index.html注入的内容有些不一样
+```
+# 服务自动上下线
+```
+如何服务内存或CPU使用超过了配置，则下线：
+    grpc client 端要支持，随着服务下线，不能再服务新的请求。
+实现部分：
+    实现grpc resolver
+```
+# 跨文档复制粘贴
+```
+copy:
+    setRedis(clipboardid, selfRouterInfo)
+    selfRouterInfo:
+        addr,sessionid,connid
+paste:
+    routerInfo:=getRedis(clipboardid)
+    rpc.Call()
 ```

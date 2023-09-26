@@ -1,6 +1,2 @@
-# master
-```
-(1)分配worker
-(2)收集结果
-(3)安装插件等
-```
+# master 架构图
+![Alt text](image-1.png)
