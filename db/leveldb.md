@@ -1,5 +1,7 @@
 # 架构图
 ![Alt text](leveldb-image.png)
+## lst tree
+![Alt text](image-6.png)
 ## 特点
 ```
 放弃部分读的性能、换取最大的写入能力

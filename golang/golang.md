@@ -10,16 +10,6 @@
 ## get流程
 ![Alt text](image-6.png)
 
-# sync.WaitGroup
-```
-利用信号量，原理：
-(1) wg.Wait()的时候获取指定的信号量数
-  当满足了信号量时，则程序可以继续运行
-  否则程序挂起
-  程序挂起，调内核保障，不用太关心细节
-(2) wg.Done()的时候放一个信号量
-
-```
 # sync.Mutex
 ```
 加锁的原理是cas设置一个变量值为1，设置成功则获取到锁
@@ -41,6 +31,38 @@
 当从等待队列唤醒的G等待时间没超过1MS时，就将锁切回正常模式
 当等待队列为空后，也会将锁切回正常模式
 ```
+# sync.WaitGroup
+原理易于理解版
+```go 
+type WaitGroup struct {
+  waiter int
+  counter int
+  sema int
+}
+调用wg.Add(n)时 相当于counter+=n
+调用wg.Done()时 相当于counter--，如果counter==0，会释放sema个信号量唤醒调用wg.Wait()的Goroutine
+调用wg.Wait()时 相当于waiter++，同时增加信号量，并挂起当前goroutine
+```
+无锁细节
+```
+试想如果想两个变量支持并发，直接用锁就行了，但用锁会增加性能开销，golang的做法是：
+  counter和waiter柔和到一个int64变量里，高32代表counter，低32代表waiter
+```
+注意
+```go
+Add和Wait方法，不能同时调用，否则会panic//自已看Add源码看到
+```
+# slice
+扩容机制
+```
+初始长度         增长比例
+256             2.0
+512             1.63
+1024            1.44
+2048            1.35
+4096            1.30
+```
+解释：小于256则翻倍，其他长度扩容类似
 # map
 特点（[原理](https://qcrao91.gitbook.io/go/map/map-de-di-ceng-shi-xian-yuan-li-shi-shi-mo)）
 ```c
@@ -55,13 +77,19 @@
 (1)经过hash(key)定位到具体桶后，key的前辍大概率是不一样的
 (2)整形比较给其他类型快
 ```
-get过程
+key定位过程
 ```
 (1)根据hash(key)得到64位的二进制
 (2)低N位用来定位到桶
-(3)用高8位的值来检索topHash
-(3.1)如果找到了，会进一步检查key是否相同(如果key不相同呢？网上没答案)
-(3.2)如果topHash检索完没有目标值，且溢出桶不为空，再继续用上述过程检索溢出桶
+(3)桶固定有8个位置，还有一个固定长度为topbits的整形数组，
+(3.1)topbits存放高8位的值，查找时先比较topbit，如果相等，则再进一步比较key(比较前辍key思想)
+(3.2)如果不等，则继续找下一位
+(3.3)如果topbits里找不到且溢桶不为空，也要在溢出桶里找
+```
+key冲突处理
+```
+(1)如果桶还有空的位置，则存放到桶里
+(2)如果桶不为空，则存放到溢出桶
 ```
 delete过程
 ```
@@ -160,7 +188,36 @@ timeout和deadline context原理
 ```
 # channel
 ## 原理
-
+结构
+```go
+type hchan struct {
+  lock mutex //锁
+  buf      unsafe.Pointer//循环链表
+  sendx    uint   // 发送 buf的位置
+  recvx    uint   // 接收 buf的位置
+  recvq    waitq  // 接收gorutine队列
+  sendq    waitq  // 发送gorutine队列
+}
+```
+发送流程
+```
+(1)加锁
+(2)将值拷贝到buf
+(3)如果buf满了，会阻塞，并加入sendq队列
+(4)从recvq唤醒一个G
+```
+接收流程
+```
+(1)加锁
+(2)从buf里拷贝值
+(3)如果buf为空，会阻塞，并加入recvq队列
+(4)从sendq唤醒一个G
+```
+close
+```
+(1)唤醒所有读队列recvq的G
+(2)唤醒所有写队列sendq的G，并且写的G会panic
+```
 ## channel三种状态和三种操作结果
 | 操作     | 空值(nil) | 已关闭   | 未关闭 |
 | -------- | --------- | -------- | ------ |
@@ -182,6 +239,15 @@ interface变量内部包含了两个字段：类型T与值V
 	t.Log(i==nil)//false
 //为什么是false?
 因为首先要将nil转换为interface即(T=nil,V=nil)，而i的结构为(T=*int,V=nil)，所以不相等
+```
+# struct{}
+空struct,最主要只是节省内存而已
+```c
+//为什么struct{}占用空间为0
+所有空struct 都指向：runtime.zerobase 
+//struct{}的作用
+ map做set
+ chan 信号
 ```
 # go语言初始化顺序
 ```
@@ -242,7 +308,7 @@ in main
 ```
 
 ## defer,panic,recover
-panic 只会触发当前goroutine
+如果没有recover,panic 会导致主程序退出。并且recover只能捕获当前goroutine
 ```go 
 func f() {
   defer print("f defer")
@@ -298,4 +364,90 @@ golang可以分为四大类型：
 (2)值要相等(用的是==比较法)
 (3)如果interface指向的是slice或map会报panic，因为两个slice或两个map之间是不可以比较的
 ```
+# 什么是协程
+```
+协程的执行是在线程上的，
+一个线程里可以有多个协程，
+线程内的协程是串行的执行的
+简单可以理解为用户态的线程。
+```
+协程切换
+```
+协程切换的代价比较小，可以简单理解为只切换了寄存器和协程栈的内容
+```
 
+# select 原理
+[原理](https://cloud.tencent.com/developer/article/2205909)
+```go
+type scase struct{
+  c channel
+  ...
+}
+select 语句用于channel上，用于监听多个channel是否可写或可读，思想和io多路复用一样
+case对应一个结构体runtime.scase
+如果有多个case，最终会运行到runtime.selectgo()函数上
+  该函数会随机开始遍历case数组，保证channel不会有饿死的情况
+  同时也会对根据channel的地址加锁，保证不会产生死锁
+```
+# 一些知识
+```
+变量是分配到堆上还是栈上，是由编译阶段决定的，golang编译会做逃逸分析
+  如函数返回指针，一般会分配到堆上
+栈
+  一般指函数栈
+  函数栈的作用：保存局部变量、向被调函数传递参数、保存函数返回地址等
+  栈的大小随着函数调用层级增加而增大，随着函数的返回而减小。
+  函数栈自动回收的关键是：编译器插入了代码实现的(c++函数栈也会自动回收)
+go函数返回指针安全吗
+  安全的，因为值分配在堆上
+```
+# cas 原理
+```
+cas = CompareAndSwap(v,e,n),依靠硬件实现：
+    只有v=e才会将值改为n，否则什么都不做
+
+但cas有ABA问题：
+  即有三个线程同时修改一个变量，线程1将值变为A-->B，线程3将值变为B-->A，线程2将值变为A-->B
+  这时线程2是不知道，变量中间有变化过
+  解决方法是：给变量增加版本号，参考java的AtomicStampedReference实现
+```
+
+atomic.Addint(&v,delta)原理
+```go
+  利用cas实现
+  func Addint(int *addr, delta) {
+      for {
+        expect:=*addr
+        v = *addr + delta
+        if CompareAndSwap(addr, expect, v) {
+          break
+        }
+      }
+  }
+```
+# sync.Value原理
+前提
+```go
+interface{}变量，go内部会转换成类似这个结构体
+  type efaceWords struct {
+    typ  unsafe.Pointer
+    data unsafe.Pointer
+  }
+typ 的作用是中间状态
+```
+Strore()原理
+```
+  第一次的情况：
+    如果是没赋过值，即typ==nil，则会用CompareAndSwap将typ设置为“中间临时状态”
+    然后再用StorePointer()赋值data和type
+    (其他线程判断typ==中间临时状态，会重新来，即等待的意思)
+  后面的情况：都是调用StorePointer()赋值data
+```
+Load()原理
+```
+LoadPointer()
+```
+Swap()原理
+```
+SwapPointer()
+```

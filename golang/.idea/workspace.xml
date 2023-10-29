@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -20,9 +23,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1b0512b5-870f-4da3-aa40-9547a134de30" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/test/kratos_config_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/waitgroup_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../aa.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../db/leveldb.md" beforeDir="false" afterPath="$PROJECT_DIR$/../db/leveldb.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../db/mysql.md" beforeDir="false" afterPath="$PROJECT_DIR$/../db/mysql.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../en.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/golang.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/golang.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gmp.md" beforeDir="false" afterPath="$PROJECT_DIR$/gmp.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/golang.md" beforeDir="false" afterPath="$PROJECT_DIR$/golang.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hulk/worker.md" beforeDir="false" afterPath="$PROJECT_DIR$/../hulk/worker.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../network/http.md" beforeDir="false" afterPath="$PROJECT_DIR$/../network/http.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../network/tcp.md" beforeDir="false" afterPath="$PROJECT_DIR$/../network/tcp.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../prompt.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../prompt/designservice/designservice.md" beforeDir="false" afterPath="$PROJECT_DIR$/../prompt/designservice/designservice.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../prompt/prompt.md" beforeDir="false" afterPath="$PROJECT_DIR$/../prompt/prompt.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../redis/redis.md" beforeDir="false" afterPath="$PROJECT_DIR$/../redis/redis.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../wo/监控报警.md" beforeDir="false" afterPath="$PROJECT_DIR$/../wo/监控报警.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../yd/yd2.md" beforeDir="false" afterPath="$PROJECT_DIR$/../yd/yd2.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,12 +57,15 @@
       </list>
     </option>
   </component>
-  <component name="GOROOT" path="C:/Program Files/Go" />
+  <component name="GOROOT" url="file://C:/Program Files/Go" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="GoLibraries">
     <option name="indexEntireGoPath" value="false" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2SVZWPtZEHkDc5sFLx9RrZSacTo" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -51,85 +75,108 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="DefaultGoTemplateProperty" value="Go File" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="go.import.settings.migrated" value="true" />
-    <property name="go.sdk.automatically.set" value="true" />
-    <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/test" />
-    <property name="restartRequiresConfirmation" value="false" />
-  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;go.sdk.automatically.set&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/devin/github/note/golang/test&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
+  }
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\devin\github\note\golang\test" />
       <recent name="E:\devin\github\note\golang\test_http_cache" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Test.TestLeetCode in note/test (1)">
+  <component name="RunManager" selected="Go Test.TestKratosConfig in note/test">
+    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="golang" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestKratosConfig in note/test" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="golang" />
+      <working_directory value="$PROJECT_DIR$/test" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="note/test" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestKratosConfig\E$" />
+      <method v="2" />
+    </configuration>
     <configuration name="TestLeetCode in note/test (1)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="golang" />
       <working_directory value="$PROJECT_DIR$/test" />
-      <framework value="gotest" />
       <kind value="PACKAGE" />
       <package value="note/test" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
-      <pattern value="^\QTestLeetCode\E$" />
-      <method v="2" />
-    </configuration>
-    <configuration name="TestLeetCode in note/test" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="golang" />
-      <working_directory value="$PROJECT_DIR$/test" />
       <framework value="gotest" />
-      <kind value="PACKAGE" />
-      <package value="note/test" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
       <pattern value="^\QTestLeetCode\E$" />
       <method v="2" />
     </configuration>
     <configuration name="TestLongest in note/test (1)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="golang" />
       <working_directory value="$PROJECT_DIR$/test" />
-      <framework value="gotest" />
       <kind value="PACKAGE" />
       <package value="note/test" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
       <pattern value="^\QTestLongest\E$" />
       <method v="2" />
     </configuration>
     <configuration name="TestLongest in note/test (2)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="golang" />
       <working_directory value="$PROJECT_DIR$/test" />
-      <framework value="gotest" />
       <kind value="PACKAGE" />
       <package value="note/test" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
       <pattern value="^\QTestLongest\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestLongest in note/test" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="TestWaitGroup in note/test" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="golang" />
       <working_directory value="$PROJECT_DIR$/test" />
-      <framework value="gotest" />
+      <root_directory value="$PROJECT_DIR$" />
       <kind value="PACKAGE" />
       <package value="note/test" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
-      <pattern value="^\QTestLongest\E$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestWaitGroup\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
+      <module name="golang" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="DIRECTORY" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Test.TestKratosConfig in note/test" />
+        <item itemvalue="Go Test.TestWaitGroup in note/test" />
         <item itemvalue="Go Test.TestLeetCode in note/test (1)" />
         <item itemvalue="Go Test.TestLongest in note/test (2)" />
         <item itemvalue="Go Test.TestLongest in note/test (1)" />
-        <item itemvalue="Go Test.TestLongest in note/test" />
-        <item itemvalue="Go Test.TestLeetCode in note/test" />
       </list>
     </recent_temporary>
   </component>
@@ -147,60 +194,9 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VgoProject">
-    <integration-enabled>true</integration-enabled>
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="524" y="118" key="#xdebugger.evaluate" timestamp="1693298522298">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="524" y="118" key="#xdebugger.evaluate/0.0.1536.824@0.0.1536.824" timestamp="1693298522298" />
-    <state width="461" height="466" key="DebuggerActiveHint" timestamp="1693574356003">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="461" height="466" key="DebuggerActiveHint/0.0.1536.824@0.0.1536.824" timestamp="1693574356003" />
-    <state width="1493" height="174" key="GridCell.Tab.0.bottom" timestamp="1693580197707">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="174" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1693580197707" />
-    <state width="1493" height="174" key="GridCell.Tab.0.center" timestamp="1693580197707">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="174" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1693580197707" />
-    <state width="1493" height="174" key="GridCell.Tab.0.left" timestamp="1693580197707">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="174" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1693580197707" />
-    <state width="1493" height="174" key="GridCell.Tab.0.right" timestamp="1693580197707">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="174" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1693580197707" />
-    <state width="1493" height="174" key="GridCell.Tab.1.bottom" timestamp="1693580197707">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="174" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1693580197707" />
-    <state width="1493" height="174" key="GridCell.Tab.1.center" timestamp="1693580197707">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="174" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1693580197707" />
-    <state width="1493" height="174" key="GridCell.Tab.1.left" timestamp="1693580197707">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="174" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1693580197707" />
-    <state width="1493" height="174" key="GridCell.Tab.1.right" timestamp="1693580197707">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="174" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1693580197707" />
-    <state x="468" y="144" width="600" height="536" key="find.popup" timestamp="1692607915421">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="468" y="144" width="600" height="536" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1692607915421" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1690532283658">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1690532283658" />
+    <settings-migrated>true</settings-migrated>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -264,6 +260,16 @@
           <url>file://$PROJECT_DIR$/test/leetcode_test.go</url>
           <line>221</line>
           <option name="timeStamp" value="36" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/test/kratos_config_test.go</url>
+          <line>52</line>
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/test/kratos_config_test.go</url>
+          <line>56</line>
+          <option name="timeStamp" value="42" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

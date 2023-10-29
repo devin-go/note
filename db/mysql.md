@@ -510,7 +510,7 @@ count()函数是统计不为NULL的记录有多少个
 delete与truncate的区别
 ```
 delete是一行一行数据删除，事务可以回滚(dml语句)
-truncate是drop表后，再创建表，事务可以回滚(ddl语句)
+truncate是drop表后，再创建表，事务不可以回滚(ddl语句)
 ```
 union 与 union all的区别
 ```
